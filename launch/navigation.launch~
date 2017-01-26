@@ -1,0 +1,32 @@
+ <!-- modified by mrinmoy sarkar-->
+
+<launch>
+   <!-- <include file="$(find hratc2016_framework)/launch/pointcloud_generator.launch"/>  -->
+
+
+	<arg name="cmd_vel_topic" default="/husky/cmd_vel" />
+	<arg name="odom_topic" default="odom" />
+
+	<node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+		<rosparam file="$(find teamd)/settings/costmap_common_params.yaml" command="load" ns="global_costmap" />
+		<rosparam file="$(find teamd)/settings/costmap_common_params.yaml" command="load" ns="local_costmap" />
+		<rosparam file="$(find teamd)/settings/local_costmap_params.yaml" command="load" />
+		<rosparam file="$(find teamd)/settings/global_costmap_params.yaml" command="load" />
+		<rosparam file="$(find teamd)/settings/base_local_planner_params.yaml" command="load" />
+
+		<remap from="cmd_vel" to="$(arg cmd_vel_topic)"/>
+   		<remap from="odom" to="$(arg odom_topic)"/>
+  	</node>
+
+    <node pkg="teamd" type="load_corner" respawn="true" name="Load_Corner" output="screen">
+    </node>
+
+    <node pkg="teamd" type="movetilt" respawn="true" name="MoveTilt" output="screen">
+    </node>
+
+    <node pkg="teamd" type="random_walk_navigation_node" respawn="true" name="random_walk_navigation" output="screen">
+    </node>
+   <!-- <node pkg="teamd" type="sweep_node_simulation" respawn="true" name="sweep_node" output="screen"> </node> -->
+
+
+</launch>

@@ -1,0 +1,19 @@
+ <!-- created by mrinmoy sarkar-->
+
+<launch>
+
+    <node pkg="teamd" type="load_corner" respawn="true" name="Load_Corner" output="screen">
+    </node>
+
+    <node pkg="teamd" type="movetilt" respawn="true" name="MoveTilt" output="screen">
+    </node>
+
+<node pkg="teamd" type="move_hand" respawn="true" name="Move_Hand" output="screen">
+    </node>
+<node pkg="teamd" type="mine_detector" respawn="true" name="Mine_detector" output="screen">
+    </node>
+
+    <node pkg="teamd" type="navigation_node" respawn="true" name="navigation" output="screen">
+    </node>
+   
+</launch>

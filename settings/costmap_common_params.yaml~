@@ -1,0 +1,14 @@
+obstacle_range: 5.0 #2.5
+raytrace_range: 5.0
+#robot_radius: 1.8 #1.4
+
+footprint: [[-0.75, -0.75], [-0.75, 0.75], [0.75, 0.75], [0.75, -0.75]]
+footprint_padding: 0.05
+#inflation_radius: 2.0
+
+inflation_radius: 1.5 #1.5
+observation_sources: scan 
+scan: {data_type: LaserScan, topic: /scan, marking: true, clearing: true}
+
+#observation_sources: cloud
+#cloud: {data_type: PointCloud2, topic: /cloud_assembled, marking: true, clearing: true}
